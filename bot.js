@@ -412,30 +412,31 @@ client.on("message", message => {
 
 
 
- client.on("message", message => {
-    if (message.content === "-help") {
-     const embed = new Discord.RichEmbed()
-         .setColor('RANDOM')
-         .setFooter('By ♪ ℬℐℓѦℓ✋')
-         .setThumbnail(message.author.avatarURL)
-         .setDescription(`
-  
-     **✨Administrationr Commands | اوامر الاداره✨**
-   -ban    | لحظر لاعب
-   -kick   | لإخراج لاعب من السيرفر
-   -mute   |  لإسكات لاعب
-   -unmute | لإلغاء الاإسكات عن لاعب
-   -bc     | لإرسال رسالة لمستخدمي البوت
-   -clear  | لمسح اشات
-   -warn    | تحذير لاعب
-   **✨Common Commands | الاوامر العامة ✨**
-   -help   | لإظهار هذه الرسالة
-   -report |للتبليغ عن اي احد يقوم بالإزعاج
-   -bot    | لإظهار معلومات البوت
-   `)
-   message.author.send(embed);
-  }  
-  });
+client.on("message", message => {
+  if (message.content === "-help") {
+   const embed = new Discord.RichEmbed()
+       .setColor('RANDOM')
+       .setFooter('By ♪ ℬℐℓѦℓ✋')
+       .setThumbnail(message.author.avatarURL)
+       .setDescription(`
+
+   **✨Administrationr Commands | اوامر الاداره✨**
+ -ban    | لحظر لاعب
+ -kick   | لإخراج لاعب من السيرفر
+ -mute   |  لإسكات لاعب
+ -unmute | لإلغاء الاإسكات عن لاعب
+ -bc     | لإرسال رسالة لمستخدمي البوت
+ -warn   | لتنبيه احد بسبب خطأ قام به
+-clear  | لمسح اشات
+ **✨Common Commands | الاوامر العامة ✨**
+ -help   | لإظهار هذه الرسالة
+ -report |للتبليغ عن اي احد يقوم بالإزعاج
+ -bot    | لإظهار معلومات البوت
+  Soon More Will be added
+ `)
+ message.author.send(embed);
+}  
+});
 
 
 
