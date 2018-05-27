@@ -117,7 +117,8 @@ client.on('message', message => {
 
 
       client.on('message', msg => { 
-        if (msg.content.startsWith(`#report`)) {
+        if (msg.content.startsWith(`#warn`)) {
+          if(!message.member.hasPermission("MANAGE_MEMBERS")) return message.reply('ليس لديك صلاحية لهاذا الامر');
         // تعريف الارجس
            let args = msg.content.split(" ").slice(1);
         // لو ما منشن احد يرد عيله
