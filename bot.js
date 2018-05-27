@@ -116,7 +116,25 @@ client.on('message', message => {
 
 
 
-
+      client.on('message', msg => { 
+        if (msg.content.startsWith(`#report`)) {
+        // تعريف الارجس
+           let args = msg.content.split(" ").slice(1);
+        // لو ما منشن احد يرد عيله
+          if (!msg.mentions.members.first()) return msg.reply(`يجب عليك منشن شخص`)
+        // لو ما كتب تبليغ بيقوله اكتب تبليغ
+          if (!args[1]) return msg.reply(`امممم ..اكتب السبب`)
+        // استبدل <الروم> بأسم الروم حقك
+          if (msg.guild.channels.find('name', 'Warns')) {
+        // استبدل هنا بعد
+            msg.guild.channels.find('name', 'Warns').send(`
+          تم اعطائك تنبيه : ${msg.mentions.members.first()}
+          لأنك قمت بما يلي
+          **${args.join(" ").split(msg.mentions.members.first()).slice(' ')}**
+          `)
+          }
+        }
+        })
 
 
 
