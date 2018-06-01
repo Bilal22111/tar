@@ -89,7 +89,7 @@ client.on('message', message => {
 
 
 
-    client.on('message', msg => { 
+client.on('message', msg => { 
       if (msg.content.startsWith(`#report`)) {
       // تعريف الارجس
          let args = msg.content.split(" ").slice(1);
@@ -131,12 +131,35 @@ client.on('message', message => {
           `)
           }
         }
-        })
+})
 
 
 
 
 
+
+
+
+
+client.on('message', msg => {
+  if(msg.content.startsWith('!suggest')) {
+    let args = msg.content.split(" ").slice(1);
+    if(!args) return msg.reply('الرجاء كتابة الاقتراح')
+    if(msg.guild.channels.find('name', 'suggestions')) {
+      msg.guild.channels.find('name', 'suggestions').send(`
+      تم الاقتراح من قبل : ${msg.member}
+
+      الاقتراح : 
+      ${args.join(" ").split(msg.mentions.members.first()).slice(' ')}
+      `)
+      .then(function (message) {
+        message.react('✅')
+        message.react('❌')
+      })
+      }
+    }
+
+});
 
 
 
