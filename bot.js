@@ -143,6 +143,8 @@ client.on('message', msg => {
 
 client.on('message', msg => {
   if(msg.content.startsWith('!suggest')) {
+    if(!msg.channel.guild) return msg.reply('** هاذا الامر فقط للسيرفرات**');
+    if(!msg.guild.channels.find('name', 'suggestions')) return msg.reply('**الرجاء إضافة روم بإسم (suggestions)**');
     let args = msg.content.split(" ").slice(1);
     if(!args[1]) return msg.reply('الرجاء كتابة الاقتراح')
     if(msg.guild.channels.find('name', 'suggestions')) {
