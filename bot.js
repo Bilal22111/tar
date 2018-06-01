@@ -1,20 +1,20 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-var prefix = "#"
+var prefix = "!"
 
 
 
 
 
 client.on('message', msg => {
-  if (msg.content === '#help') {
+  if (msg.content === '!help') {
     msg.reply('شوف الخاص :mailbox: ');
   }
 });
 
 
 client.on('message', message => {
-    if (message.content.startsWith("#bot")) {
+    if (message.content.startsWith("!bot")) {
       message.channel.send({
  embed: new Discord.RichEmbed() 
     .setColor('RED')
@@ -90,7 +90,7 @@ client.on('message', message => {
 
 
 client.on('message', msg => { 
-      if (msg.content.startsWith(`#report`)) {
+      if (msg.content.startsWith(`!report`)) {
       // تعريف الارجس
          let args = msg.content.split(" ").slice(1);
       // لو ما منشن احد يرد عيله
@@ -118,7 +118,7 @@ client.on('message', msg => {
 
  
       client.on('message', msg => { 
-        if (msg.content.startsWith(`#warn`)) {
+        if (msg.content.startsWith(`!warn`)) {
           if(!msg.member.hasPermission("MANAGE_MESSAGES")) return;
            let args = msg.content.split(" ").slice(1);
           if (!msg.mentions.members.first()) return msg.reply('```منشن الشخص المحدد```')
@@ -174,7 +174,7 @@ client.on('message', message => {
   let args = message.content.split(' ').slice(1).join(' ');
 if(message.content.split(' ')[0] == prefix + 'bc') {
   if (!args[1]) {
-message.channel.send("**#bc <message>**");
+message.channel.send("**!bc <message>**");
 return;
 }
       message.guild.members.forEach(m => {
@@ -215,7 +215,7 @@ return;
 
 
 client.on("message", message => {
-  var prefix = "#";
+  var prefix = "!";
 
           var args = message.content.substring(prefix.length).split(" ");
           if (message.content.startsWith(prefix + "clear")) {
@@ -256,7 +256,7 @@ client.on("message", message => {
 
 
 client.on('message', message => {
-  let prefix = "#"
+  let prefix = "!"
   if (message.author.x5bz) return;
   if (!message.content.startsWith(prefix)) return;
  console.log(`Diamond team`);
@@ -309,7 +309,7 @@ client.on('message', message => {
 
 
 client.on('message', message => {
-  let prefix = "#"
+  let prefix = "!"
   if (message.author.x5bz) return;
   if (!message.content.startsWith(prefix)) return;
       console.log(`Diamond Team`);
@@ -413,7 +413,7 @@ client.on("message", message => {
 
   let command = message.content.split(" ")[0];
 
-  if (command === "#mute") {
+  if (command === "!mute") {
         if (!message.member.hasPermission('MANAGE_ROLES')) return message.reply("** لا يوجد لديك برمشن 'Manage Roles' **").catch(console.error);
   let user = message.mentions.users.first();
   let modlog = client.channels.find('name', 'mod-log');
@@ -506,7 +506,7 @@ client.on("message", message => {
 
   let command = message.content.split(" ")[0];
 
-  if (command === "#unmute") {
+  if (command === "!unmute") {
         if (!message.member.hasPermission('MANAGE_ROLES')) return message.reply("** لا يوجد لديك برمشن 'Manage Roles' **").catch(console.error);
   let user = message.mentions.users.first();
   let modlog = client.channels.find('name', 'mod-log');
@@ -560,7 +560,7 @@ return message.reply("**:white_check_mark: .. تم فك الميوت عن الش
 
 
 client.on("message", message => {
-  if (message.content === "#help") {
+  if (message.content === "!help") {
    const embed = new Discord.RichEmbed()
        .setColor('RANDOM')
        .setFooter('By ♪ ℬℐℓѦℓ✋')
@@ -568,17 +568,18 @@ client.on("message", message => {
        .setDescription(`
 
    **✨Administrationr Commands | اوامر الاداره✨**
- #ban    | لحظر لاعب
- #kick   | لإخراج لاعب من السيرفر
- #mute   |  لإسكات لاعب
- #unmute | لإلغاء الاإسكات عن لاعب
- #bc     | لإرسال رسالة لمستخدمي البوت
- #clear  | لمسح اشات
+ !ban    | لحظر لاعب
+ !kick   | لإخراج لاعب من السيرفر
+ !mute   |  لإسكات لاعب
+ !unmute | لإلغاء الاإسكات عن لاعب
+ !bc     | لإرسال رسالة لمستخدمي البوت
+ !clear  | لمسح اشات
  **✨Common Commands | الاوامر العامة ✨**
- #help   | لإظهار هذه الرسالة
- #invite | لإضافة البوت
- #report |للتبليغ عن اي احد يقوم بالإزعاج
- #bot    | لإظهار معلومات البوت
+ !suggest | لإضافة اقتراح
+ !help   | لإظهار هذه الرسالة
+ !invite | لإضافة البوت
+ !report |للتبليغ عن اي احد يقوم بالإزعاج
+ !bot    | لإظهار معلومات البوت
 
  `)
  message.author.send(embed);
