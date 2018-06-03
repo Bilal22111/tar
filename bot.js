@@ -43,6 +43,41 @@ client.on('message', message => {
 
 
 
+client.on("message", message => {
+  if (message.content === "#avatar") {
+   const embed = new Discord.RichEmbed()
+       .setColor('RANDOM')
+       .setFooter('By ♪ ℬℐℓѦℓ✋')
+       .setThumbnail(message.author.avatarURL)
+       .addField(message.author.displayAvatarURL)
+ message.channel.send(embed);
+}
+});
+
+
+
+
+
+
+
+client.on('guildMemberAdd', member => {
+  if (!member || !member.id || !member.guild) return;
+  const guild = member.guild;
+
+  const channel = member.guild.channels.find('name', 'mod-log');
+  if (!channel) return;
+  let memberavatar = member.user.avatarURL
+  const fromNow = moment(member.user.createdTimestamp).fromNow();
+  const isNew = (new Date() - member.user.createdTimestamp) < 900000 ? '🆕' : '';
+  
+  let embed = new Discord.RichEmbed()
+     .setAuthor(`${member.user.tag}`, member.user.avatarURL)
+   .setThumbnail(memberavatar)
+     .setColor('GREEN')
+     .setDescription(`📥 <@${member.user.id}> **Joined To The Server**\n\n`)
+     .setTimestamp();
+   channel.send({embed:embed});
+});
 
 
 
@@ -123,7 +158,9 @@ client.on('message', msg => {
            let args = msg.content.split(" ").slice(1);
           if (!msg.mentions.members.first()) return msg.reply('```منشن الشخص المحدد```')
           if (!args[1]) return msg.reply('``اكتب السبب``')
+          //غير اسم الروم او سوي روم بذا الاسم 
           if (msg.guild.channels.find('name', 'warns')) {
+            //اذا غيرت فوق غير هنا كمان 
             msg.guild.channels.find('name', 'warns').send(`
           تم اعطائك تنبيه : ${msg.mentions.members.first()}
           لأنك قمت بما يلي
